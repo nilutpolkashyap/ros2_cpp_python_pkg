@@ -4,7 +4,7 @@
   <name>ros2_getting_started</name>
   <version>0.0.0</version>
   <description>A Getting Started package for ROS 2 in Python and C++</description>
-  <maintainer email="nilutpolkashyap@solarisrobots.in">nilutpolk</maintainer>
+  <maintainer email="nilutpolkashyap@gmail.com">nilutpolk</maintainer>
   <license>TODO: License declaration</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>

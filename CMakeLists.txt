@@ -13,9 +13,34 @@ find_package(rclpy REQUIRED)
 find_package(std_msgs REQUIRED)
 # uncomment the following section in order to fill in
 # further dependencies manually.
-# find_package(<dependency> REQUIRED)
+# find_package(<dependency> REQUIRED)  
 
-include_directories(include)       # For including C++ header files from include folder
+# For including C++ header files from include folder
+include_directories(include)     
+
+## Create CPP Executable
+add_executable(cpp_publisher src/topic_publisher.cpp)
+ament_target_dependencies(cpp_publisher rclcpp std_msgs)
+
+add_executable(cpp_subscriber src/topic_subscriber.cpp)
+ament_target_dependencies(cpp_subscriber rclcpp std_msgs)
+
+## Install CPP Executable
+install(TARGETS
+	 cpp_publisher
+   cpp_subscriber
+   DESTINATION lib/${PROJECT_NAME}
+ )
+
+## Install Python Module
+ament_python_install_package(${PROJECT_NAME})
+
+## Install Python 
+install(PROGRAMS
+	 scripts/topic_publisher.py 
+   scripts/topic_subscriber.py 
+   DESTINATION lib/${PROJECT_NAME}
+ )
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
@@ -28,16 +53,6 @@ if(BUILD_TESTING)
   ament_lint_auto_find_test_dependencies()
 endif()
 
-add_executable(topic_publisher src/topic_publisher.cpp)
-ament_target_dependencies(topic_publisher rclcpp std_msgs)
 
-add_executable(topic_subscriber src/topic_subscriber.cpp)
-ament_target_dependencies(topic_subscriber rclcpp std_msgs)
-
-install(TARGETS
-	 topic_publisher
-   topic_subscriber
-   DESTINATION lib/${PROJECT_NAME}
- )
 
 ament_package()
