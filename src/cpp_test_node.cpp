@@ -4,7 +4,7 @@
 int main(int argc, char **argv)
 {
     rclcpp::init(argc, argv);
-    auto node = stf::make_shared<MyCustomCPPNode>();
+    auto node = std::make_shared<MyCustomCPPNode>();
 
     rclcpp::spin(node);
     rclcpp::shutdown();

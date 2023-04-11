@@ -6,5 +6,5 @@ from rclpy.node import Node
 class MyCustomPYNode(Node):
 
     def __init__(self):
-        super().__init__("TEST PYTHON Node")
-        self.get_logger().info("TEST Python")
+        super().__init__("my_python_test_node")
+        self.get_logger().info("TEST Python Node")
