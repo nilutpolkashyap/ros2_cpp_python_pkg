@@ -19,11 +19,16 @@ include_directories(include)
 add_executable(cpp_node src/cpp_test_node.cpp)
 ament_target_dependencies(cpp_node rclcpp)
 
+add_executable(string_publisher src/string_publisher.cpp)
+ament_target_dependencies(string_publisher rclcpp std_msgs)
+
 # Install CPP Executables
 install(TARGETS
   cpp_node
+  string_publisher
   DESTINATION lib/${PROJECT_NAME}
 )
+
 
 # Install Python Modules
 ament_python_install_package(${PROJECT_NAME})
