@@ -22,10 +22,14 @@ ament_target_dependencies(cpp_node rclcpp)
 add_executable(string_publisher src/string_publisher.cpp)
 ament_target_dependencies(string_publisher rclcpp std_msgs)
 
+add_executable(string_subscriber src/string_subscriber.cpp)
+ament_target_dependencies(string_subscriber rclcpp std_msgs)
+
 # Install CPP Executables
 install(TARGETS
   cpp_node
   string_publisher
+  string_subscriber
   DESTINATION lib/${PROJECT_NAME}
 )
 
