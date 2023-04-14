@@ -16,7 +16,9 @@ def generate_launch_description():
             package="ros2_cpp_python_pkg", 
             executable="speed_calculator",
             name="speed_calc_node",
-
+            parameters=[
+                {"wheel_radius": 10/100} ### Centimeters to Meters
+            ]
         ),
         ExecuteProcess(
             cmd=['ros2', 'topic', 'list'],
