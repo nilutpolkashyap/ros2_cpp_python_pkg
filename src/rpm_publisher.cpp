@@ -25,7 +25,7 @@ class RpmPubNode : public rclcpp::Node
     {
       auto message = std_msgs::msg::Float64();
       this->get_parameter("rpm_val", rpm_param_val_);
-      message.data = rpm
+      message.data = rpm_param_val_;
       // message.data = RPM_VALUE;
 
       RCLCPP_INFO(this->get_logger(), "Published RPM: '%f'", message.data);

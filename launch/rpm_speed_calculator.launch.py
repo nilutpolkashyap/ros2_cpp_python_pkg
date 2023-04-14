@@ -12,8 +12,14 @@ def generate_launch_description():
                 {"rpm_val": 5.0}
             ]
         ),
-        # ExecuteProcess(
-        #     cmd=['ros2', 'topic', 'list'],
-        #     output='screen'
-        # )
+        Node(
+            package="ros2_cpp_python_pkg", 
+            executable="speed_calculator",
+            name="speed_calc_node",
+
+        ),
+        ExecuteProcess(
+            cmd=['ros2', 'topic', 'list'],
+            output='screen'
+        )
     ])
