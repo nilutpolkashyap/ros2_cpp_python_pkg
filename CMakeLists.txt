@@ -41,6 +41,12 @@ install(TARGETS
   DESTINATION lib/${PROJECT_NAME}
 )
 
+# Install for Launch files
+install(DIRECTORY
+  launch
+  DESTINATION share/${PROJECT_NAME}/
+)
+
 
 # Install Python Modules
 ament_python_install_package(${PROJECT_NAME})
