@@ -25,6 +25,8 @@ class SpeedCalcNode : public rclcpp::Node
 
       /// Speed [m/s] = RPM [rev/min] * Wheel_Circumference [meters/rev] / 60 [seconds/min]
       speed_msg.data = rpm_msg.data * (2 * WHEEL_RADIUS * M_PI) / 60; 
+      // std::cout<< speed_msg.data << std::endl;
+      RCLCPP_INFO(this->get_logger(), "Calculated speed: '%f'", speed_msg.data);
       speed_publisher_->publish(speed_msg);
 		}
 		rclcpp::Subscription<std_msgs::msg::Float64>::SharedPtr rpm_subscription_;

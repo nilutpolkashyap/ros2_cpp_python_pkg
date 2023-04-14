@@ -25,11 +25,19 @@ ament_target_dependencies(string_publisher rclcpp std_msgs)
 add_executable(string_subscriber src/string_subscriber.cpp)
 ament_target_dependencies(string_subscriber rclcpp std_msgs)
 
+add_executable(rpm_publisher src/rpm_publisher.cpp)
+ament_target_dependencies(rpm_publisher rclcpp std_msgs)
+
+add_executable(speed_calculator src/speed_calculator.cpp)
+ament_target_dependencies(speed_calculator rclcpp std_msgs)
+
 # Install CPP Executables
 install(TARGETS
   cpp_node
   string_publisher
   string_subscriber
+  rpm_publisher
+  speed_calculator
   DESTINATION lib/${PROJECT_NAME}
 )
 
