@@ -25,6 +25,9 @@ class HelloWorldPubNode : public rclcpp::Node
 			auto message = std_msgs::msg::String();
 			message.data = "Hello World - " + std::to_string(counter_);
 			RCLCPP_INFO(this->get_logger(), "Publishing: '%s'", message.data.c_str());
+			// RCLCPP_WARN(this->get_logger(), "Publishing: '%s'", message.data.c_str());
+			// RCLCPP_ERROR(this->get_logger(), "Publishing: '%s'", message.data.c_str());
+			// RCLCPP_DEBUG(this->get_logger(), "Publishing: '%s'", message.data.c_str());
 			publisher_->publish(message);
 
 			counter_++;
