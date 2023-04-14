@@ -11,6 +11,14 @@ find_package(ament_cmake_python REQUIRED)
 find_package(rclpy REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
+find_package(rosidl_default_generators REQUIRED)
+
+# Generate custom interfaces
+rosidl_generate_interfaces(${PROJECT_NAME}
+  "srv/OddEvenCheck.srv"
+  ADD_LINTER_TESTS
+  DEPENDENCIES std_msgs
+)
 
 # Include CPP "include" directory
 include_directories(include)
