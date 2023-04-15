@@ -15,6 +15,7 @@ find_package(OpenCV REQUIRED)
 find_package(cv_bridge REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
+find_package(action_msgs REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 
 # Generate custom interfaces
@@ -22,7 +23,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "srv/OddEvenCheck.srv"
   "srv/TurnCamera.srv"
   DEPENDENCIES 
-  sensor_msgs action_msgs geometry_msgs std_msgs
+  sensor_msgs geometry_msgs std_msgs
   ADD_LINTER_TESTS
 )
 
@@ -56,14 +57,6 @@ add_executable(service_client src/service_client.cpp)
 ament_target_dependencies(service_client rclcpp) 
 target_link_libraries(service_client "${cpp_typesupport_target}")
 
-add_executable(turn_camera_service src/turn_camera_service.cpp)
-ament_target_dependencies(turn_camera_service rclcpp sensor_msgs OpenCV cv_bridge) 
-target_link_libraries(turn_camera_service "${cpp_typesupport_target}")
-
-add_executable(turn_camera_client src/turn_camera_client.cpp)
-ament_target_dependencies(turn_camera_client rclcpp sensor_msgs OpenCV cv_bridge) 
-target_link_libraries(turn_camera_client "${cpp_typesupport_target}")
-
 # Install CPP Executables
 install(TARGETS
   cpp_node
@@ -73,8 +66,6 @@ install(TARGETS
   speed_calculator
   service_server
   service_client
-  turn_camera_service
-  turn_camera_client
   DESTINATION lib/${PROJECT_NAME}
 )
 
@@ -86,12 +77,13 @@ install(DIRECTORY
 
 
 # Install Python Modules
-ament_python_install_package(${PROJECT_NAME})
+# ament_python_install_package(${PROJECT_NAME})
 ament_python_install_package(scripts)
 
 # Install Python Executables
 install(PROGRAMS
   scripts/py_test_node.py
+  scripts/py_test_module.py
   DESTINATION lib/${PROJECT_NAME}
 )
 

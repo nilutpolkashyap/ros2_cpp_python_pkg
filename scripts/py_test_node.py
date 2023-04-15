@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import rclpy
-from ros2_cpp_python_pkg.py_test_module import MyCustomPYNode
+from scripts.py_test_module import MyCustomPYNode
 
 def main(args=None):
     rclpy.init(args=args)
