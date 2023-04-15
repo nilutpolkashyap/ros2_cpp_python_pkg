@@ -87,6 +87,7 @@ install(DIRECTORY
 
 # Install Python Modules
 ament_python_install_package(${PROJECT_NAME})
+ament_python_install_package(scripts)
 
 # Install Python Executables
 install(PROGRAMS
